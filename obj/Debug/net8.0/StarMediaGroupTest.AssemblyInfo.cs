@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StarMediaGroupTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a620b0a24c0047c6ae18cd321ba4000ed45972ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4699381cb1d0aeeb2387eeb6dd97fb1a8bfef7c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("StarMediaGroupTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StarMediaGroupTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
