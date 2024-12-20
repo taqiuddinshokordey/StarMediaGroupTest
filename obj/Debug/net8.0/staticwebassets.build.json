@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y94t0gh8ukWUFaf/3cqVtNmOVwcNtqyAcKfMUNe9YX8=",
+  "Hash": "JRO1swH7n68wBn5xiOf/MAuqTleVt5HCe46rJB6Pg+8=",
   "Source": "StarMediaGroupTest",
   "BasePath": "_content/StarMediaGroupTest",
   "Mode": "Default",
@@ -112,6 +112,25 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
+      "Identity": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/js/privacy-consent.js",
+      "SourceId": "StarMediaGroupTest",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/",
+      "BasePath": "_content/StarMediaGroupTest",
+      "RelativePath": "js/privacy-consent.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/privacy-consent.js"
+    },
+    {
       "Identity": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/js/site.js",
       "SourceId": "StarMediaGroupTest",
       "SourceType": "Discovered",
@@ -129,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/site.js"
+    },
+    {
+      "Identity": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/js/terms-modal.js",
+      "SourceId": "StarMediaGroupTest",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/",
+      "BasePath": "_content/StarMediaGroupTest",
+      "RelativePath": "js/terms-modal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/terms-modal.js"
     },
     {
       "Identity": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",

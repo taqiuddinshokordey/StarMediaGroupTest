@@ -19,3 +19,80 @@ footer {
     text-align: center;
     font-size: 0.9rem;
 }
+
+/* File: wwwroot/css/styles.css */
+
+/* Block scrolling when modal is active */
+body.modal-active {
+    overflow: hidden; /* Prevent page scrolling */
+}
+
+/* Privacy Consent Box */
+.privacy-consent-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+.privacy-consent-box p {
+    font-size: 1rem;
+    margin: 0 0 15px;
+}
+
+.privacy-consent-box button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.privacy-consent-box button:hover {
+    background-color: #0056b3;
+}
+
+/* Overlay behind the consent box */
+.consent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    z-index: 999;
+    display: none; /* Initially hidden */
+}
+
+
+/* File: wwwroot/css/styles.css */
+
+/* Custom styles for modal if needed */
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-footer .btn {
+    min-width: 100px;
+}
+
+/* Custom CSS for centering the Privacy Consent Modal on mobile */
+@media (max-width: 576px) {
+    #privacyConsentModal .modal-dialog {
+        margin: auto; /* Center the modal */
+        top: 50%; /* Position it in the middle of the screen */
+        transform: translateY(-50%); /* Adjust for the height of the modal */
+    }
+}
+

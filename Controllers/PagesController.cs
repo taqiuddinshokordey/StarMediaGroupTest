@@ -1,7 +1,7 @@
 // File: Controllers/PagesController.cs
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebSiteExample.Controllers
+namespace StarMediaGroupTest.Controllers
 {
     public class PagesController : Controller
     {
@@ -23,6 +23,15 @@ namespace WebSiteExample.Controllers
         public IActionResult Terms()
         {
             return View();
+        }
+        public IActionResult _TermsContent()
+        {
+            return PartialView();
+        }
+
+        public IActionResult _PrivacyContent()
+        {
+            return PartialView();
         }
     }
 }

@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/js/privacy-consent.js",
+      "PackagePath": "staticwebassets/js/privacy-consent.js"
+    },
+    {
       "Id": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/js/terms-modal.js",
+      "PackagePath": "staticwebassets/js/terms-modal.js"
     },
     {
       "Id": "/Users/taqishokordey/Library/CloudStorage/OneDrive-Personal/Code/StarMediaGroupTest/StarMediaGroupTest/wwwroot/lib/bootstrap/LICENSE",
