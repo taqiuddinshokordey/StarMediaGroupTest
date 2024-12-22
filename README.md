@@ -68,6 +68,49 @@ StarMediaGroupTest/
 └── README.md
 ```
 
+
+## Containerize with Docker
+
+To containerize the application using Docker, follow these steps:
+
+1. Create a `Dockerfile` in the project directory with the following content:
+
+    ```dockerfile
+    FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+    WORKDIR /app
+    EXPOSE 80
+
+    FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+    WORKDIR /src
+    COPY ["StarMediaGroupTest/StarMediaGroupTest.csproj", "StarMediaGroupTest/"]
+    RUN dotnet restore "StarMediaGroupTest/StarMediaGroupTest.csproj"
+    COPY . .
+    WORKDIR "/src/StarMediaGroupTest"
+    RUN dotnet build "StarMediaGroupTest.csproj" -c Release -o /app/build
+
+    FROM build AS publish
+    RUN dotnet publish "StarMediaGroupTest.csproj" -c Release -o /app/publish
+
+    FROM base AS final
+    WORKDIR /app
+    COPY --from=publish /app/publish .
+    ENTRYPOINT ["dotnet", "StarMediaGroupTest.dll"]
+    ```
+
+2. Build the Docker image using the following command:
+
+    ```bash
+    docker build -t starmediagrouptest .
+    ```
+
+3. Run the Docker container using the following command:
+
+    ```bash
+    docker run -d -p 8080:80 --name starmediagrouptest_container starmediagrouptest
+    ```
+
+Now your application is running inside a Docker container and can be accessed at `http://localhost:8080`.
+
 ## License
 
 This project is licensed under the MIT License.
