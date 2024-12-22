@@ -2,7 +2,6 @@
 
 // Function to get a cookie value by name
 function getCookie(name) {
-    console.log('Ini Path dia');
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
@@ -20,7 +19,7 @@ $(document).ready(function () {
         console.log('Has Consented: ' + hasConsented);
 
         // Check if the cookie has the value "declined" or not, and if the user is on a target page
-        if ((hasConsented !== "declined" || hasConsented !== "accepted" ) && targetPaths.includes(window.location.pathname) && hasConsented === null) {
+        if ((hasConsented !== "declined") && targetPaths.includes(window.location.pathname) && hasConsented === null) {
             $("#privacyConsentModal").modal({
                 backdrop: 'static', // Prevent closing by clicking outside
                 keyboard: false // Prevent closing with the Escape key
@@ -34,11 +33,23 @@ $(document).ready(function () {
                 method: 'POST',
                 contentType: 'application/json',
                 success: function (response) {
+                    // Extract the privacyConsentCookie from the response
                     var privacyConsentCookie = response.privacyConsentCookie;
-                    console.log(privacyConsentCookie)
-                    document.cookie = `privacyConsent=accepted; path=/; expires=${new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000).toUTCString()}`;
+                    
+                    // Set the expiry date for the cookie (1 year from now)
+                    var expiryDate = new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+            
+                    // Set the consent cookie in the document
+                    document.cookie = `privacyConsent=${privacyConsentCookie}; path=/; expires=${expiryDate}`;
+
+                    hasConsented = getCookie("privacyConsent");
+            
+                    // Optionally, you can close the modal after acceptance
                     $('#privacyConsentModal').modal('hide');
                 },
+                error: function (error) {
+                    console.error('Error accepting consent:', error);
+                }
             });
         });
 
