@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=build /out .
 
 # Expose the application port (default ASP.NET Core port is 5000)
-EXPOSE 5000
+EXPOSE 80
 
 # Specify the entry point for the container
 ENTRYPOINT ["dotnet", "StarMediaGroupTest.dll"]

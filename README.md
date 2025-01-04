@@ -20,13 +20,43 @@ To restore the dependencies, use the following command:
 dotnet restore
 ```
 
-## Apply Migrations
+## Database Setup
 
-To apply the migrations to the database, use the following command:
+1. Set up Entity Framework CLI tools:
+   ```bash
+   # Install EF CLI tools globally
+   dotnet tool install --global dotnet-ef
+   
+   # Verify installation
+   dotnet ef --version
+   
+   # If you need to update existing tools
+   dotnet tool update --global dotnet-ef
+   ```
 
-```bash
-dotnet ef database update
-```
+2. Install required NuGet packages in your project:
+   ```bash
+   dotnet add package Microsoft.EntityFrameworkCore.Design
+   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+   ```
+
+3. Update your database connection in `appsettings.json`:
+   ```json
+   {
+       "ConnectionStrings": {
+           "DefaultConnection": "Server=YOUR_SERVER;Database=YOUR_DB;User Id=YOUR_USER;Password=YOUR_PASSWORD;"
+       }
+   }
+   ```
+
+4. Create and update the database:
+   ```bash
+   # Create a new migration
+   dotnet ef migrations add InitialCreate
+   
+   # Apply migrations to the database
+   dotnet ef database update
+   ```
 
 Ensure that you have the Entity Framework CLI tools installed and configured.
 

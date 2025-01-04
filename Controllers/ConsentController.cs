@@ -21,25 +21,31 @@ namespace StarMediaGroupTest.Controllers
         [HttpPost]
         public IActionResult AcceptConsent()
         {
-            var guid = Guid.NewGuid();
-            var consent = new PrivacyConsent
+            try
             {
-                Id = guid,
-                Accepted = true,
-                Timestamp = DateTime.UtcNow,
-                Version = 1
-            };
+                var guid = Guid.NewGuid();
+                var consent = new PrivacyConsent
+                {
+                    Id = guid,
+                    Accepted = true,
+                    Timestamp = DateTime.UtcNow,
+                    Version = 1
+                };
 
-            var consentData = $"{consent.Id},{consent.Timestamp},{consent.Version}";
+                _context.Add(consent);
+                _context.SaveChanges();
 
-            _context.Add(consent);
-            _context.SaveChanges();
+                Response.Cookies.Append("PrivacyConsent", guid.ToString(),
+                    new CookieOptions { Expires = DateTime.UtcNow.AddYears(1), HttpOnly = true });
 
-            Response.Cookies.Append("PrivacyConsent",consentData,
-                new CookieOptions { Expires = DateTime.UtcNow.AddYears(1) });
-
-            // Return the consent data in the response
-            return Json(new { message = "Consent accepted", privacyConsentCookie = consentData });
+                // Return success message (optional: return the ID if needed by the client)
+                return Json(new { message = "Consent accepted", consentId = guid });
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Json(new { message = "Error accepting consent", error = ex.Message });
+            }
         }
     }
 }

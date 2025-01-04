@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -19,4 +20,17 @@ html {
 
 body {
   margin-bottom: 60px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
 }
