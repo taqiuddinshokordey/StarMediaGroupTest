@@ -2,15 +2,31 @@
 
 // Function to get a cookie value by name
 function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null; // Return null if the cookie is not found
+    let cookieValue = null;
+    
+    // Make synchronous Ajax call to get cookie value
+    $.ajax({
+        url: '/Consent/GetCookie',
+        type: 'GET',
+        data: { name: name },
+        async: false, // Making it synchronous to maintain similar usage pattern
+        success: function(response) {
+            if (response.success) {
+                cookieValue = response.value;
+            }
+        },
+        error: function(error) {
+            console.error('Error fetching cookie:', error);
+        }
+    });
+    
+    return cookieValue;
 }
 
 // Main Privacy Consent Logic
 $(document).ready(function () {
-    const hasConsented = getCookie("privacyConsent");
+    var hasConsented = getCookie("PrivacyConsent");
+    console.log('Privacy Consent:', hasConsented);
     
     // Simplified condition to check consent status
     if (hasConsented === null || hasConsented === undefined) {
@@ -25,20 +41,12 @@ $(document).ready(function () {
             method: 'POST',
             contentType: 'application/json',
             success: function (response) {
-                // Extract the privacyConsentCookie from the response
-                var privacyConsentCookie = response.privacyConsentCookie;
-                
-                // Set the expiry date for the cookie (1 year from now)
-                var expiryDate = new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+                hasConsented = getCookie("PrivacyConsent");
         
-                // Set the consent cookie in the document
-                document.cookie = `privacyConsent=${privacyConsentCookie}; path=/; expires=${expiryDate}`;
-
-                hasConsented = getCookie("privacyConsent");
-        
-                // Hide the banner instead of modal
-                $('#privacy-consent-banner').removeClass('d-block').addClass('d-none');
+                // Hide the banner and refresh the page
+                $('#privacyConsentModal').removeClass('d-block').addClass('d-none');
                 $('body').css('overflow', 'auto');
+                window.location.reload();
             },
             error: function (error) {
                 console.error('Error accepting consent:', error);
@@ -48,15 +56,21 @@ $(document).ready(function () {
 
     // Handle Decline button click
     $("#declineConsentButton").on("click", function () {
-        // Create a cookie for decline that lasts 1 day
-        const expirationDays = 1;
-        const expiryDate = new Date();
-        expiryDate.setDate(expiryDate.getDate() + expirationDays);
 
-        document.cookie = `privacyConsent=declined; path=/; expires=${expiryDate.toUTCString()}`;
-
-        // Hide the banner instead of modal
-        $("#privacy-consent-banner").removeClass('d-block').addClass('d-none');
-        $('body').css('overflow', 'auto');
+        // Send decline status to the database
+        $.ajax({
+            url: '/consent/DeclineConsent',
+            method: 'POST',
+            contentType: 'application/json',
+            success: function (response) {
+            // Hide the banner and refresh the page
+                $("#privacyConsentModal").removeClass('d-block').addClass('d-none');
+                $('body').css('overflow', 'auto');
+                window.location.reload();
+            },
+            error: function (error) {
+                console.error('Error declining consent:', error);
+            }
+        });
     });
 });

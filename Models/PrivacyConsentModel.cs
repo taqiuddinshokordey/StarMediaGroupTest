@@ -5,4 +5,6 @@ public class PrivacyConsent
     public bool Accepted { get; set; }
     public DateTime Timestamp { get; set; }
     public int Version { get; set; }
+
+    public bool IsDarkMode {get; set;}
 }

@@ -1,98 +1,284 @@
+:root {
+    --primary-color: #6200ea;    /* Vibrant blue */
+    --secondary-color: #7209b7;  /* Deep purple */
+    --accent-color: #bb86fc;     /* Bright pink */
+    --light-color: #f8f9fa;
+    --dark-color: #2b2d42;
+    --gradient-bg: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+}
+
+/* Body and general styles */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    background-color: #fafafa;
+    color: var(--dark-color);
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
+/* Header/Navbar Styles */
+.navbar {
+    background: var(--gradient-bg) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.container {
-    padding: 1rem;
+.navbar .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-footer {
-    background-color: #f8f9fa;
-    padding: 1rem 0;
-    text-align: center;
-    font-size: 0.9rem;
+.navbar .nav-link:hover {
+    color: #ffd60a !important;
+    transform: translateY(-2px);
 }
 
-/* File: wwwroot/css/styles.css */
+/* Desktop Navigation Styles */
+@media (min-width: 992px) {
+    .navbar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        background: var(--gradient-bg) !important;
+        z-index: 1000;
+    }
 
-/* Block scrolling when modal is active */
-body.modal-active {
-    overflow: hidden; /* Prevent page scrolling */
+    .navbar-expand-lg .navbar-nav {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-expand-lg .nav-link {
+        padding: 1rem 2rem;
+        color: white !important;
+    }
+
+    /* Adjust main content to account for fixed nav */
+    main {
+        padding-top: 5rem;
+    }
+
+    /* Center the entire navbar content */
+    .navbar > .container-fluid {
+        justify-content: center;
+    }
+
+    /* Remove the toggle button on desktop */
+    .navbar-toggler {
+        display: none;
+    }
 }
 
-/* Privacy Consent Box */
-.privacy-consent-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 400px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: none; /* Initially hidden */
+/* Mobile Navigation Styles */
+@media (max-width: 991.98px) {
+    .bottom-nav {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        background: var(--gradient-bg) !important;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding: 0.5rem 0;
+    }
+
+    .bottom-nav .navbar-nav {
+        flex-direction: row !important;
+        justify-content: space-around;
+        width: 100%;
+        margin: 0;
+    }
+
+    .bottom-nav .nav-item {
+        text-align: center;
+        flex: 1;
+    }
+
+    /* Adjust main content for mobile */
+    main {
+        margin-bottom: 5rem !important;
+    }
+
+    /* Adjust footer for mobile */
+    .footer {
+        margin-bottom: 4.5rem !important;
+    }
 }
 
-.privacy-consent-box p {
-    font-size: 1rem;
-    margin: 0 0 15px;
-}
-
-.privacy-consent-box button {
-    background-color: #007bff;
+/* Back to Top Button - Mobile Only */
+.back-to-top {
+    display: none;
+    position: fixed !important;
+    bottom: 5rem !important;
+    right: 1rem !important;
+    z-index: 999;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-color) !important;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
 }
 
-.privacy-consent-box button:hover {
-    background-color: #0056b3;
+@media (max-width: 991.98px) {
+    .back-to-top.show {
+        display: block;
+    }
 }
 
-/* Overlay behind the consent box */
-.consent-overlay {
-    position: fixed;
-    top: 0;
+.back-to-top:hover {
+    background: var(--secondary-color) !important;
+    transform: translateY(-3px);
+}
+
+.back-to-top i {
+    font-size: 1.2rem;
+}
+
+/* Ensure privacy banner stays on top */
+#privacy-consent-banner {
+    z-index: 1051 !important;
+}
+
+/* Footer */
+.footer {
+    background: var(--dark-color) !important;
+    color: white;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Privacy Consent Banner */
+#privacy-consent-banner {
+    background: var(--gradient-bg) !important;
+    color: white;
+}
+
+#acceptConsentButton {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+#declineConsentButton {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Section Headers */
+.section-header {
+    color: var(--secondary-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
-    z-index: 999;
-    display: none; /* Initially hidden */
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
 }
 
-
-/* File: wwwroot/css/styles.css */
-
-/* Custom styles for modal if needed */
-.modal-content {
-    border-radius: 8px;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.modal-footer .btn {
-    min-width: 100px;
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
 }
 
-/* Custom CSS for centering the Privacy Consent Modal on mobile */
-@media (max-width: 576px) {
-    #privacyConsentModal .modal-dialog {
-        margin: auto; /* Center the modal */
-        top: 50%; /* Position it in the middle of the screen */
-        transform: translateY(-50%); /* Adjust for the height of the modal */
+/* Dark mode toggle styles */
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode .navbar,
+.dark-mode .bottom-nav {
+    background: #1a1a1a !important;
+}
+
+.dark-mode .navbar .nav-link,
+.dark-mode .bottom-nav .nav-link {
+    color: white !important;
+}
+
+.dark-mode .navbar .nav-link:hover,
+.dark-mode .bottom-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+.dark-mode .footer {
+    background-color: #1a1a1a !important;
+    color: white;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 991.98px) {
+    .theme-toggle {
+        top: auto;
+        bottom: 5rem;
+        left: 1rem;
     }
 }
 
